@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Twitter_Auto__Alt_Text.OCR;
 
 namespace Twitter_Auto__Alt_Text
 {
@@ -29,7 +31,7 @@ namespace Twitter_Auto__Alt_Text
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory factory)
         {
             if (env.IsDevelopment())
             {
@@ -70,6 +72,8 @@ namespace Twitter_Auto__Alt_Text
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+            //Initialize Tessereact engine
+            ProcessImage.Init();
         }
     }
 }
