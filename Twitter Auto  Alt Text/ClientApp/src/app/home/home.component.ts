@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PostServiceService } from "../post-service.service";
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
-import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+
 const URL = 'https://localhost:44334/extract';
 @Component({
 	selector: "pm-home",
@@ -55,7 +55,6 @@ export class HomeComponent {
 		const formData = new FormData();
 		formData.append('file', this.myForm.get('fileSource').value);
 		this.uploadservice.GetAltText('https://localhost:44334/extract', formData)
-
 			.subscribe(res => {
         this.Altext = res.text;
 			})

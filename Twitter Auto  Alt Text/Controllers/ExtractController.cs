@@ -21,6 +21,7 @@ namespace Twitter_Auto__Alt_Text.Controllers
         public ActionResult Index()
         {
 
+            string fullPath = "";
             try
             {
                 var file = Request.Form.Files[0];
@@ -30,7 +31,7 @@ namespace Twitter_Auto__Alt_Text.Controllers
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
+                     fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
@@ -39,7 +40,7 @@ namespace Twitter_Auto__Alt_Text.Controllers
                     }
                     
                     var dictresponse = new Dictionary<string, string>();
-                    var alttext = ProcessImage.ExtractText(ProcessImage.GetGrayedImage(fullPath));
+                    var alttext = ProcessImage.ExtractText(fullPath);
                     if (alttext.Length > 0)
                     {
                         alttext = "Image may contain the following text: " + alttext;
@@ -57,6 +58,7 @@ namespace Twitter_Auto__Alt_Text.Controllers
             }
             catch (Exception ex)
             {
+                ProcessImage.DeleteFile(fullPath);
                 return StatusCode(500, $"Internal server error: {ex}");
             }
             
