@@ -37,7 +37,7 @@ namespace Twitter_Auto__Alt_Text.Controllers
                     {
                         file.CopyTo(stream);
                     }
-                    ProcessImage.GrayScale(fullPath);
+                    
                     var dictresponse = new Dictionary<string, string>();
                     var alttext = ProcessImage.ExtractText(ProcessImage.GetGrayedImage(fullPath));
                     if (alttext.Length > 0)
