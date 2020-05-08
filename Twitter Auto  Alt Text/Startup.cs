@@ -1,11 +1,15 @@
+using FileUploadService.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.IO;
 using Twitter_Auto__Alt_Text.OCR;
 
 namespace Twitter_Auto__Alt_Text
@@ -46,6 +50,11 @@ namespace Twitter_Auto__Alt_Text
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
+                RequestPath = new PathString("/Resources")
+            });
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -74,6 +83,8 @@ namespace Twitter_Auto__Alt_Text
             });
             //Initialize Tessereact engine
             ProcessImage.Init();
+            //configure Logging to console
+            Log.ConfigureLogger(factory);
         }
     }
 }

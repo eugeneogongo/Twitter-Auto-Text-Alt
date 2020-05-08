@@ -21,6 +21,8 @@ namespace Twitter_Auto__Alt_Text.OCR.Tests
         "Deployment failed: {0} did not get deployed.",
         imagepath
         );
+            ProcessImage.GrayScale(imagepath);
+            Assert.IsTrue(true);
             var text = ProcessImage.ExtractText(imagepath);
             Assert.IsNotNull(text);
             Debug.WriteLine(text);
