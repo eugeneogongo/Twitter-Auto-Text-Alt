@@ -11,7 +11,8 @@ const URL = 'https://localhost:44334/extract';
 export class HomeComponent {
   Altext: string;
     imagePath: any;
-    imgURL: string | ArrayBuffer;
+  imgURL: string | ArrayBuffer;
+  Loading: boolean = false;
 	constructor(private uploadservice: PostServiceService) { }
 
 	myForm = new FormGroup({
@@ -25,7 +26,7 @@ export class HomeComponent {
 		return this.myForm.controls;
 	}
 	onFileChange(event) {
-
+    this.Altext = null;
 		if (event.target.files.length > 0) {
 
 			const file = event.target.files[0];
@@ -35,6 +36,7 @@ export class HomeComponent {
 				fileSource: file
 
       });
+      this.Loading = true;
       this.setImage(event);
 			this.submit();
 		}
@@ -57,6 +59,7 @@ export class HomeComponent {
 		this.uploadservice.GetAltText('https://localhost:44334/extract', formData)
 			.subscribe(res => {
         this.Altext = res.text;
+        this.Loading = false;
 			})
 
 	}

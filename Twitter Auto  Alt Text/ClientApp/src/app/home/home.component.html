@@ -1,25 +1,27 @@
 
 <section role="main" class="container">
   <div class="row mt-5 mt-md-5">
-    <div class="col-md-4 col-12 is-dotted-border is-center">
+    <div class="col-md-4 col-12 is-dotted-border is-center" style="height:60vh">
       <form [formGroup]="myForm" (ngSubmit)="submit()">
-          <label for="file" class="btn btn-success btn-s">Select a File to Generate Alt Text</label>
-          <input formControlName="file"
-                 id="file"
-                 type="file"
-                 (change)="onFileChange($event)" style="visibility:hidden;display:none">
-          <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-            <div *ngIf="f.file.errors.required">File is required.</div>
-          </div>
+        <label for="file" class="btn btn-success btn-s">Select a File to Generate Alt Text</label>
+        <input formControlName="file"
+               id="file"
+               type="file"
+               (change)="onFileChange($event)" style="visibility:hidden;display:none">
+        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+          <div *ngIf="f.file.errors.required">File is required.</div>
+        </div>
       </form>
     </div>
-    <div class="col-md-8 col-12">
+    <div class="col-md-8 col-12 is-center" *ngIf="Loading">
+      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <div class="col-md-8 col-12" *ngIf="Altext">
       <div class="m-3 card">
-        <div class="card-body" style="height:50vh">
-          
-          <div class="row" *ngIf="Altext">
+        <div class="card-body">
+          <div class="row">
             <div class="col-12 col-md-6">
-              <img [alt]="Altext" class="img-fluid rounded" [src]="imgURL"/>
+              <img [alt]="Altext" class="img-fluid" [src]="imgURL" />
             </div>
             <div class="col-12 col-md-6">
               <h5>Generated Alt-Text</h5>
@@ -29,7 +31,7 @@
         </div>
       </div>
     </div>
-  </div>
+     </div>
 </section>
 
 
