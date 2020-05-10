@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PostServiceService } from "../post-service.service";
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 
-const URL = 'https://localhost:44334/extract';
+const URL = 'http://localhost/extract';
 @Component({
 	selector: "pm-home",
 	templateUrl: './home.component.html',
@@ -56,7 +56,7 @@ export class HomeComponent {
 	submit() {
 		const formData = new FormData();
 		formData.append('file', this.myForm.get('fileSource').value);
-		this.uploadservice.GetAltText('https://localhost:44334/extract', formData)
+		this.uploadservice.GetAltText('/extract', formData)
 			.subscribe(res => {
         this.Altext = res.text;
         this.Loading = false;

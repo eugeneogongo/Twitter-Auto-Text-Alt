@@ -81,7 +81,6 @@ namespace Twitter_Auto__Alt_Text
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-            //Initialize Tessereact engine
             ProcessImage.Init();
             //configure Logging to console
             Log.ConfigureLogger(factory);

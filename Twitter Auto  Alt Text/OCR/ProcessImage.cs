@@ -22,12 +22,13 @@ namespace Twitter_Auto__Alt_Text.OCR
                 tesseractEngine = new TesseractEngine(@".\tessdata", "eng", EngineMode.Default);
 
                 var result = tesseractEngine.Process(Pix.LoadFromFile(path), PageSegMode.Auto);
+                
                 return result.GetText().Trim();
 
             } catch (Exception ex)
             {
-                Log.E(ex.Message);
-                return null;
+                Log.E(ex.StackTrace);
+                return "";
             }
         }
 

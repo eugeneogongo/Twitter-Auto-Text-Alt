@@ -40,7 +40,9 @@ namespace Twitter_Auto__Alt_Text.Controllers
                     }
                     
                     var dictresponse = new Dictionary<string, string>();
-                    var alttext = ProcessImage.ExtractText(fullPath);
+                   
+                   var  alttext = ProcessImage.ExtractText(fullPath);
+
                     if (alttext.Length > 0)
                     {
                         alttext = "Image may contain the following text: " + alttext;
