@@ -1,7 +1,7 @@
 
 # Auto-Text-Alt - [Live Website](https://alttext.azurewebsites.net/)
 
-This project shows how to achieve web accessibility.
+This project shows how to achieve web accessibility by generating Alt texts from text-based images.
 >Web Accessibilty means that people with some type of disability will be able to use the _Web_.
 ### ## What is Alt Text?
 Alt text (alternative text), are used within an HTML code to describe the appearance and function of an image on a page.
