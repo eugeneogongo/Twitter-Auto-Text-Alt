@@ -11,7 +11,11 @@
         <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
           <div *ngIf="f.file.errors.required">File is required.</div>
         </div>
+        <div class="container" *ngIf="Altext">
+          <img [alt]="Altext" class="img-thumbnail" height="200" [src]="imgURL" />
+        </div>
       </form>
+      
     </div>
     <div class="col-md-8 col-12 is-center" *ngIf="Loading">
       <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -19,17 +23,14 @@
     <div class="col-md-8 col-12" *ngIf="Altext">
       <div class="m-3 card">
         <div class="card-body">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <img [alt]="Altext" class="img-fluid" [src]="imgURL" />
-            </div>
-            <div class="col-12 col-md-6">
-              <h5>Generated Alt-Text</h5>
-              <p class="lead">{{Altext}}</p>
-            </div>
+            <h5>Generated Alt-Text</h5>
+            <ngx-prism [language]="language">
+              {{Altext}}
+            </ngx-prism>
           </div>
         </div>
-      </div>
+        
+     
     </div>
      </div>
 </section>

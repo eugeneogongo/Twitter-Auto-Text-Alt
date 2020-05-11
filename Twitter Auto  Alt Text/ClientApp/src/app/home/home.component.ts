@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { PostServiceService } from "../post-service.service";
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 
+
 const URL = 'http://localhost/extract';
 @Component({
 	selector: "pm-home",
@@ -10,6 +11,7 @@ const URL = 'http://localhost/extract';
 })
 export class HomeComponent {
   Altext: string;
+  language = 'html';
     imagePath: any;
   imgURL: string | ArrayBuffer;
   Loading: boolean = false;
@@ -58,7 +60,8 @@ export class HomeComponent {
 		formData.append('file', this.myForm.get('fileSource').value);
 		this.uploadservice.GetAltText('/extract', formData)
 			.subscribe(res => {
-        this.Altext = res.text;
+        this.Altext = "<img src='something.jpg' alt='" + res.text.trim() + "' />";
+        console.log(res.text);
         this.Loading = false;
 			})
 

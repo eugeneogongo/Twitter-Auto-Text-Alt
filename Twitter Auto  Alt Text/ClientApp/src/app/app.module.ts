@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { PrismModule } from '@ngx-prism/core';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+PrismModule,
     RouterModule.forRoot([
       {path:'',component:HomeComponent,pathMatch:"full"}
     ])
