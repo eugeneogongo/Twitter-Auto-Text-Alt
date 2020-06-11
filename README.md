@@ -3,7 +3,7 @@
 
 This project shows how to achieve web accessibility by generating Alt texts from text-based images.
 >Web Accessibilty means that people with some type of disability will be able to use the _Web_.
-### ## What is Alt Text?
+## What is Alt Text?
 Alt text (alternative text), are used within an HTML code to describe the appearance and function of an image on a page.
 ### Uses of Alt Text
 - Adding alternative text to photos is first and foremost a principle of web accessibility. Visually impaired users using screen readers will be read an alt attribute to better understand an on-page image.
