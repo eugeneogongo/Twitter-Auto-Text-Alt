@@ -14,7 +14,7 @@ Alt text (alternative text), are used within an HTML code to describe the appear
 In this project, a user uploads an image, then an alt texts is generated from the text. There is a web service developed to handle the extraction of the alt text
 ### Testing
 Sample images used for this project can be found here [Poem Porn Twitter Account](https://twitter.com/PoemPorns)
-### Technologies Uses
+### Technologies Used
 - asp.net Core
 - angularjs 8 for frontend
 -  Tesseract
